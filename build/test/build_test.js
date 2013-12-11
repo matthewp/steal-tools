@@ -49,6 +49,27 @@ test("Steal is packaged with the build.", function(done){
 
 });
 
+test("Steal can build from a .html file", function(done){
+	expect(1);
+
+	rimraf("build/test/production.js");
+
+	// We have to temporarily create a steal/steal.js
+	createStealJs();
+
+	var options = {
+		compressor: "uglify"
+	};
+
+	build("build/test/app.html", options, function(){
+		rimraf("steal");
+		var productionjs = readFile("build/test/production.js");
+
+		ok(productionjs.length, "Production.js has been created.");
+		done();
+	});
+});
+
 function createStealJs(){
 	mkpath(path.resolve(process.cwd(), "steal"));
 	var stealjs = readFile("steal.js");
