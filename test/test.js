@@ -335,7 +335,7 @@ describe("plugins", function(){
 		});
 	});
 	
-	/*it("can build less", function(done){
+	it("can build less", function(done){
 		rmdir(__dirname+"/dep_plugins/bundles", function(error){
 			
 			if(error){
@@ -353,7 +353,6 @@ describe("plugins", function(){
 				open("test/dep_plugins/prod.html", function(browser, close){
 			
 					find(browser,"STYLE_CONTENT", function(styleContent){
-						console.log(styleContent)
 						assert(styleContent.indexOf("#test-element")>=0, "have correct style info");
 						close();
 					}, close);
@@ -364,7 +363,7 @@ describe("plugins", function(){
 				done(e);
 			});
 		});
-	})*/
+	})
 });
 
 

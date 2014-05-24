@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "steal": "git://github.com/bitovi/steal.git#94bf357f5080e2153fec439183ec2a1324559c25",
-    "jquery": "~1.10.0"
+    "jquery": "~1.10.0",
+		"less" : "^1.7.0"
   }
 }
