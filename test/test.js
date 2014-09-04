@@ -829,11 +829,37 @@ describe("pluginify", function(){
 						 "No System.set in the output");
 		}).then(done);
 	});
+
+	it.only("Supports a UMD format output", function(done){
+		//this.timeout(9999999);
+
+		pluginify({
+			config: __dirname+"/umd/config.js",
+			main: "main"
+		}, {
+			format: "global",
+			exports: {},
+			quiet: false
+		}).then(function(pluginify){
+			debugger;
+			fs.writeFile(__dirname+"/umd/out.js", pluginify(), function(err) {
+			    // open the prod page and make sure
+				// the plugin processed the input correctly
+				open("test/umd/prod.html", function(browser, close){
+					find(browser, "RESULT", function(result){
+						assert.equal(result.steal, "works", "Loaded steal module");
+						assert.equal(result.amd.amd, "works", "Loaded amd module");
+						assert.equal(result.amd.cjs, "works", "loaded commonjs module");
+						close();
+					}, close);
+				}, done);
+			});
+		});
+	});
 });
 
 describe("multi-main", function(){
 	it("should work", function(done){
-		this.timeout(10000);
 		var mains = ["app_a","app_b","app_c","app_d"],
 			ab = {name: "a_b"},
 			cd = {name: "c_d"},

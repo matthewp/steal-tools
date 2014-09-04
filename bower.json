@@ -4,6 +4,7 @@
   "devDependencies": {
     "steal": "git://github.com/bitovi/steal#a6e7eda6cd99b96eb9e18ae4f6ccf6c80156dfea",
     "jquery": "~1.10.0",
-	"less" : "^1.7.0"
+    "less": "^1.7.0",
+    "system.js": "~0.8.2"
   }
 }
